@@ -25,7 +25,8 @@ jobs:
             exit 0
           fi
 
-          npm i -g h5p
+          # H5P CLI is being rewritten completely, so be cautios and pin version
+          npm i -g h5p@0.11.0 --save --save-exact
 
           COLOR_OFF='\033[0m'
           COLOR_RED='\033[0;31m'
