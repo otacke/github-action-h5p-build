@@ -56,8 +56,6 @@ jobs:
             then
               (( ERROR_COUNT=ERROR_COUNT + 1 ))
             else
-              EXPECTED_UNSAFE_TRANSLATIONS=${{ inputs.expected-unsafe-translations }}
-
               ISSUE_COUNT=$(echo "$RESULT" | wc -l)
               (( ISSUE_COUNT=(ISSUE_COUNT - 1) / 2 ))
               if (( $ISSUE_COUNT - $EXPECTED_UNSAFE_TRANSLATIONS >= $UNSAFE_TRANSLATIONS_COUNT ))
@@ -88,7 +86,8 @@ jobs:
             echo "$RESULT"
             if (( $(echo "$RESULT" | grep "FAILED" | wc -l) != 0 ))
             then
-              if [[ ${{ inputs.expected-unsafe-translations }} ]]
+              EXPECTED_UNSAFE_TRANSLATIONS=${{ inputs.expected-unsafe-translations }}
+              if [[ $EXPECTED_UNSAFE_TRANSLATIONS ]]
               then
                 check_unsafe_translations
               else
