@@ -114,7 +114,15 @@ jobs:
           fi
 
       - name: Lint
-        run: npm run lint --if-present
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run lint --if-present
+          fi
 
       - name: Build
-        run: npm run build --if-present
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run build --if-present
+          fi
