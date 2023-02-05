@@ -108,7 +108,10 @@ jobs:
 
       - name: Install node modules from package.json
         run: |
-          npm ci
+          if [ -f "./package.json" ]
+          then
+            npm ci
+          fi
 
       - name: Lint
         run: npm run lint --if-present
