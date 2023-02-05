@@ -7,10 +7,16 @@ Builds an H5P content type library incl. checks.
   - Translation matching semantics.json (via [H5P CLI](https://github.com/h5p/h5p-cli))
 - Lints if a `lint` script is defined in `package.json`
 - Builds if a `build` script is defined in `package.json`
+- Allows to optionally set an action input `expected-unsafe-translations` that
+  sets the number of expected unsafe translations, e.g. something like
+  `<p style=\"text-align: center;\"></p>` as a default value to trick the
+  CKEditor into using aligned positioning.
 
 ## Important note
 The H5P CLI tool is currently being rewritten completely. To prevent breaking
-changes, the version that's used is pinned.
+changes, the version that's used is pinned. Also, checking for "unsafe
+translations" will not work perfectly due to the way the H5P CLI tool deals
+with output.
 
 ## Example
 Inside your repository, make sure there's a directory called
@@ -29,7 +35,12 @@ on:
 jobs:
   build:
     uses: otacke/github-action-h5p-build/.github/workflows/h5p-build.yml@v1
+    with:
+      expected-unsafe-translations: 0
 ```
+
+Explicitly setting `expected-unsafe-translations` is optional, unless you need
+something else than 0, of course.
 
 Please refer to the
 [github action documentation](https://docs.github.com/en/actions) for details.
