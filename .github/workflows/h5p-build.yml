@@ -25,6 +25,7 @@ jobs:
         run: |
           pwd
           dir
+          echo ${{ github.action_path }}
           chmod +x "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
           "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
 
