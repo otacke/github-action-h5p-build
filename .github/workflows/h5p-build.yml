@@ -23,8 +23,8 @@ jobs:
       - name: Check translations with H5P-CLI
         shell: bash
         run: |
-          chmod +x "./.github/scripts/h5p-check-translations.sh"
-          "./.github/scripts/h5p-check-translations.sh"
+          chmod +x "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
+          "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
 
       - name: Install node modules from package.json
         run: |
