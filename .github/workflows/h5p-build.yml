@@ -23,6 +23,8 @@ jobs:
       - name: Check translations with H5P-CLI
         shell: bash
         run: |
+          pwd
+          dir
           chmod +x "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
           "${GITHUB_WORKSPACE}/scripts/h5p-check-translations.sh"
 
