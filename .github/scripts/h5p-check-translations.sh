@@ -64,7 +64,7 @@ for entry in "./language"/*; do
   echo "$RESULT"
 
   if (( $(echo "$RESULT" | grep -c "FAILED") != 0 )); then
-    # ${{...}} will be replaced by github action
+    # ${{ inputs.expected-unsafe-translations }} will be replaced by github action
     EXPECTED_UNSAFE_TRANSLATIONS=${{ inputs.expected-unsafe-translations }}
 
     if [[ $EXPECTED_UNSAFE_TRANSLATIONS ]]; then
