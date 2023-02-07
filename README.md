@@ -18,7 +18,16 @@ changes, the version that's used is pinned. Also, checking for "unsafe
 translations" will not work perfectly due to the way the H5P CLI tool deals
 with output.
 
-## Example
+## Usage
+You can reuse this workflow like any [reusable github action workflow](https://docs.github.com/en/actions/using-workflows/reusing-workflows).
+
+### Options
+
+| Name                           | Required | Default value | Description                                   |
+| ------------------------------ | -------- | ------------- | --------------------------------------------- |
+| `expected-unsafe-translations` | false    | `0`           | Number of expected unsafe translation strings |
+
+### Example
 Inside your repository, make sure there's a directory called
 `.github/workflows`. Inside that repository, create a file with a name along the
 lines of `reuse-h5p-build.yml` that should contain something like this:
@@ -38,9 +47,3 @@ jobs:
     with:
       expected-unsafe-translations: 0
 ```
-
-Explicitly setting `expected-unsafe-translations` is optional, unless you need
-something else than 0, of course.
-
-Please refer to the
-[github action documentation](https://docs.github.com/en/actions) for details.
