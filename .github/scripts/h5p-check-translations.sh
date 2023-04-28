@@ -20,6 +20,14 @@ ERROR_COUNT=0
 # Remember current library name
 LIBRARY_DIR=$(pwd | rev | cut -d "/" -f1 | rev)
 
+# Check file name.
+check_file_name() {
+  if [[ "$entry" == *[[:upper:]]* ]]; then
+    echo "Translation file name contains upper case letters"
+    (( ERROR_COUNT=ERROR_COUNT + 1 ))
+  fi
+}
+
 # Check JSON validity.
 check_json_validity() {
   if ! json_pp < "$entry" &> /dev/null; then
@@ -52,6 +60,8 @@ for entry in "./language"/*; do
   fi
 
   echo -e "${COLOR_BLUE}Checking $BASENAME${COLOR_OFF}"
+
+  check_file_name
 
   check_json_validity
 
