@@ -123,6 +123,13 @@ jobs:
             npm run lint --if-present
           fi
 
+      - name: Test
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm run test --if-present
+          fi          
+
       - name: Build
         run: |
           if [ -f "./package.json" ]
